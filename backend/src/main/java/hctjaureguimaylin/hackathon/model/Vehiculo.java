@@ -40,5 +40,5 @@ public class Vehiculo {
     private Integer precio;
 
     @Column(name = "activo", nullable = false)
-    private String activo;
+    private Boolean activo;
 }

@@ -1,9 +1,9 @@
-# kubectl apply -f maylin-jauregui-22-deployment.yml
+# kubectl apply -f hct-vehiculo-jauregui-maylin-deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hct-vehiculo-jauregui-maylin-deployment
-  namespace: maylin-jauregui-22-namespace
+  namespace: hct-vehiculo-jauregui-maylin-namespace
 spec:
   replicas: 3
   selector:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: hct-vehiculo-jauregui-maylin-container
-          image: maylinjg/kubernetes-b:1.0   # Reemplaza con tu imagen Docker Hub
+          image: maylinjg/hct-vehiculo-latest   # Reemplaza con tu imagen Docker Hub
           imagePullPolicy: IfNotPresent        # Evitar traer siempre la última versión si hay una actual
           envFrom:
             - secretRef:
