@@ -1,0 +1,31 @@
+# Configuración principal de la aplicación Spring Boot
+spring:
+  application:
+    name: academySistema
+  
+  # Configuración de la base de datos H2 en memoria
+  datasource:
+    url: ${h2 memoria_URI} jdbc:h2:mem:academydb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  # Configuración de JPA/Hibernate
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  
+  # Configuración de la consola H2 para visualizar la base de datos
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# Configuración del servidor en el puerto 8090
+server:
+  port: 8090

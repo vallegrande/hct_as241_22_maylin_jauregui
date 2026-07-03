@@ -1,0 +1,6 @@
+# kubectl create namespace  hct-vehiculo-jauregui-maylin-namespace (COMANDO)
+# kubectl apply -f  hct-vehiculo-jauregui-maylin-namespace.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hct-vehiculo-jauregui-maylin-namespace
