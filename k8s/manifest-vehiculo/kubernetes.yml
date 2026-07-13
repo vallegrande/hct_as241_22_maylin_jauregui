@@ -1,0 +1,60 @@
+# MINIKUBE FUNCIONA EN CODESPACE | LOCAL
+# KUBECTL FUNCIONA DIRECTO EN KILLERCODA (SIN MINIKUBE)
+
+# consultar versión de minikube
+minikube version
+
+# consultar si minikube esta en start o stop
+minikube status
+
+# iniciar clúster kubernetes
+minikube start
+
+# ingresar a la carpeta de los manifiestos de kubernetes (manifest-vehiculo)
+cd manifest-vehiculo
+
+# listar namespace
+kubectl get namespace
+kubectl get ns
+
+# crear un namespace "hct-vehiculo-jauregui-maylin-namespace" por comando mediante un archivo: "hct-vehiculo-jauregui-maylin-namespace.yml"
+kubectl apply -f hct-vehiculo-jauregui-maylin-namespace.yml
+
+# consultar namespace en uso por "default" | LINUX
+kubectl config view --minify | grep namespace
+
+# consultar namespace en uso por "default" | WINDOWS
+kubectl config view --minify | findstr namespace
+
+# cambiar un namespace en uso por "default" a "hct-vehiculo-jauregui-maylin-namespace"
+kubectl config set-context --current --namespace=hct-vehiculo-jauregui-maylin-namespace
+
+# consultar todos los recursos de un namespace "hct-vehiculo-jauregui-maylin-namespace"
+kubectl get all -n hct-vehiculo-jauregui-maylin-namespace
+
+# consultar todos los recursos y secret de un namespace "hct-vehiculo-jauregui-maylin-namespace"
+kubectl get all,secrets -n hct-vehiculo-jauregui-maylin-namespace
+
+# listar services del namespace "hct-vehiculo-jauregui-maylin-namespace"
+minikube service hct-vehiculo-jauregui-maylin-service -n hct-vehiculo-jauregui-maylin-namespace
+minikube service list
+
+# Ver los Pods
+kubectl get pods -n hct-vehiculo-jauregui-maylin-namespace
+
+# Ver todos los recursos
+kubectl get all -n hct-vehiculo-jauregui-maylin-namespace
+
+# probar el microservicio dentro del clúster con curl
+curl http://192.168.49.2:30001/v1/api/cliente
+curl http://192.168.49.2:30001/v1/api/alquiler
+curl http://192.168.49.2:30001/v1/api/vehiculo
+
+# crear un túnel de puerto la máquina local (host) y el clúster de Kubernetes
+kubectl port-forward service/hct-vehiculo-jauregui-maylin-service 8090:30001
+
+#Creaciones
+kubectl apply -f hct-vehiculo-jauregui-maylin-namespace.yml
+kubectl apply -f hct-vehiculo-jauregui-maylin-secret.yml
+kubectl apply -f hct-vehiculo-jauregui-maylin-deployment.yml
+kubectl apply -f hct-vehiculo-jauregui-maylin-service.yml

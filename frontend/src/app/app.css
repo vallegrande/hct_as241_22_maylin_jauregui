@@ -1,0 +1,71 @@
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.navbar {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%);
+  padding: 20px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid #2a4a6f;
+}
+
+.navbar h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  color: white;
+  border: 1px solid #4b5563;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border: 1px solid #2563eb;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  
+  .navbar h1 {
+    font-size: 1.5rem;
+  }
+  
+  .nav-buttons {
+    flex-direction: column;
+  }
+  
+  .nav-btn {
+    width: 100%;
+  }
+}

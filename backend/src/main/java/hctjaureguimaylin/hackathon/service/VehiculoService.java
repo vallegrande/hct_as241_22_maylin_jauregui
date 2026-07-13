@@ -18,10 +18,20 @@ public class VehiculoService {
     }
     
     public Vehiculo createVehiculo(Vehiculo vehiculo) {
-        if (vehiculoRepository.existsById(vehiculo.getId())) {
+        // Generar ID automático si no está presente
+        if (vehiculo.getId() == null || vehiculo.getId().isEmpty()) {
+            String newId = generateNextId();
+            vehiculo.setId(newId);
+        } else if (vehiculoRepository.existsById(vehiculo.getId())) {
             throw new IllegalArgumentException("Ya existe un vehiculo con el ID: " + vehiculo.getId());
         }
         return vehiculoRepository.save(vehiculo);
+    }
+
+    private String generateNextId() {
+        long count = vehiculoRepository.count();
+        int nextNumber = (int) count + 1;
+        return String.format("VH%03d", nextNumber);
     }
 
     public Vehiculo updateVehiculo(String id, Vehiculo vehiculoDetails) {

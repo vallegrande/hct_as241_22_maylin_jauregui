@@ -1,0 +1,23 @@
+# kubectl apply -f hct-cliente-jauregui-maylin-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hct-cliente-jauregui-maylin-deployment
+  namespace: hct-cliente-jauregui-maylin-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hct-cliente-jauregui-maylin-deployment        # Debe coincidir con las etiquetas del Service
+  template:
+    metadata:
+      labels:
+        app: hct-cliente-jauregui-maylin-deployment      # Debe coincidir con las etiquetas del Service
+    spec:
+      containers:
+        - name: hct-cliente-jauregui-maylin-container
+          image: userdockerhub/hct-cliente-latest   # Reemplaza con tu imagen Docker Hub
+          imagePullPolicy: IfNotPresent        # Evitar traer siempre la última versión si hay una actual
+          envFrom:
+            - secretRef:
+                name: hct-cliente-jauregui-maylin-secret # Esto cargará todos los valores como variables de entorno

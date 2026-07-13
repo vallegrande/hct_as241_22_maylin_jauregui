@@ -1,31 +1,25 @@
-# Configuración principal de la aplicación Spring Boot
+# Configuración de la aplicación
 spring:
   application:
-    name: academySistema
+    name: Hackathon
   
-  # Configuración de la base de datos H2 en memoria
+  # Configuración de la base de datos PostgreSQL
   datasource:
-    url: ${h2 memoria_URI} jdbc:h2:mem:academydb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: 
+    url: jdbc:postgresql://ep-odd-grass-a5zs4hqj-pooler.us-east-2.aws.neon.tech/Hackathon?sslmode=require&channel_binding=require
+    driver-class-name: org.postgresql.Driver
+    username: NeonDB_owner
+    password: npg_z3LUOmRcrI5G
   
   # Configuración de JPA/Hibernate
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-  
-  # Configuración de la consola H2 para visualizar la base de datos
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
 
-# Configuración del servidor en el puerto 8090
+# Configuración del servidor
 server:
   port: 8090

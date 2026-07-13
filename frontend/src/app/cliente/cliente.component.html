@@ -1,0 +1,167 @@
+<div class="container">
+  <h1>Gestión de Clientes</h1>
+  
+  <!-- Alert -->
+  <div *ngIf="alertMessage" [class]="alertType" class="alert">
+    {{ alertMessage }}
+  </div>
+
+  <!-- Form -->
+  <div class="form-container">
+    <h2>{{ isEditing ? 'Editar Cliente' : 'Nuevo Cliente' }}</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <div class="form-group" *ngIf="isEditing">
+          <label for="id">ID *</label>
+          <input 
+            type="number" 
+            id="id" 
+            [(ngModel)]="clienteForm.id" 
+            name="id" 
+            disabled
+            required
+            placeholder="ID automático"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="dni">DNI *</label>
+          <input 
+            type="text" 
+            id="dni" 
+            [(ngModel)]="clienteForm.dni" 
+            name="dni" 
+            required
+            placeholder="Ingrese DNI"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="nombres">Nombres *</label>
+          <input 
+            type="text" 
+            id="nombres" 
+            [(ngModel)]="clienteForm.nombres" 
+            name="nombres" 
+            required
+            placeholder="Ingrese nombres"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="apellidos">Apellidos *</label>
+          <input 
+            type="text" 
+            id="apellidos" 
+            [(ngModel)]="clienteForm.apellidos" 
+            name="apellidos" 
+            required
+            placeholder="Ingrese apellidos"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="celular">Celular *</label>
+          <input 
+            type="text" 
+            id="celular" 
+            [(ngModel)]="clienteForm.celular" 
+            name="celular" 
+            required
+            placeholder="Ingrese celular"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="correo">Correo *</label>
+          <input 
+            type="email" 
+            id="correo" 
+            [(ngModel)]="clienteForm.correo" 
+            name="correo" 
+            required
+            placeholder="Ingrese correo"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="licencia">Licencia *</label>
+          <input 
+            type="text" 
+            id="licencia" 
+            [(ngModel)]="clienteForm.licencia" 
+            name="licencia" 
+            required
+            placeholder="Ingrese licencia"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="estado">Estado *</label>
+          <select 
+            id="estado" 
+            [(ngModel)]="clienteForm.estado" 
+            name="estado"
+            required
+          >
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">
+          {{ isEditing ? 'Actualizar' : 'Crear' }}
+        </button>
+        <button type="button" (click)="resetForm()" class="btn btn-secondary" *ngIf="isEditing">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Table -->
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Lista de Clientes</h2>
+      <button (click)="loadClientes()" class="btn btn-refresh">
+        🔄 Actualizar
+      </button>
+    </div>
+    <table class="cliente-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>DNI</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Celular</th>
+          <th>Correo</th>
+          <th>Licencia</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.id }}</td>
+          <td>{{ cliente.dni }}</td>
+          <td>{{ cliente.nombres }}</td>
+          <td>{{ cliente.apellidos }}</td>
+          <td>{{ cliente.celular }}</td>
+          <td>{{ cliente.correo }}</td>
+          <td>{{ cliente.licencia }}</td>
+          <td [class]="cliente.estado === 'Activo' ? 'status-active' : 'status-inactive'">
+            {{ cliente.estado }}
+          </td>
+          <td>
+            <button (click)="editCliente(cliente)" class="btn btn-edit">Editar</button>
+            <button (click)="deleteCliente(cliente.id)" class="btn btn-delete">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="clientes.length === 0" class="no-data">No hay clientes registrados</p>
+  </div>
+</div>

@@ -1,13 +1,16 @@
+# Configuración de la aplicación
 spring:
   application:
     name: Hackathon
   
+  # Configuración de la base de datos PostgreSQL
   datasource:
     url: jdbc:postgresql://ep-odd-grass-a5zs4hqj-pooler.us-east-2.aws.neon.tech/Hackathon?sslmode=require&channel_binding=require
     driver-class-name: org.postgresql.Driver
     username: NeonDB_owner
     password: npg_z3LUOmRcrI5G
   
+  # Configuración de JPA/Hibernate
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
@@ -17,5 +20,6 @@ spring:
       hibernate:
         format_sql: true
 
+# Configuración del servidor
 server:
   port: 8090

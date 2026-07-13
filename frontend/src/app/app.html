@@ -1,0 +1,32 @@
+<div class="app-container">
+  <nav class="navbar">
+    <h1>Sistema de Gestión de Alquileres</h1>
+    <div class="nav-buttons">
+      <button 
+        (click)="setView('vehiculo')" 
+        [class.active]="currentView() === 'vehiculo'"
+        class=" nav-btn"
+      >
+        🚗 Vehículos
+      </button>
+      <button 
+        (click)="setView('cliente')" 
+        [class.active]="currentView() === 'cliente'"
+        class="nav-btn"
+      >
+        👤 Clientes
+      </button>
+      <button 
+        (click)="setView('alquiler')" 
+        [class.active]="currentView() === 'alquiler'"
+        class="nav-btn"
+      >
+        📋 Alquileres
+      </button>
+    </div>
+  </nav>
+
+  <app-vehiculo *ngIf="currentView() === 'vehiculo'"></app-vehiculo>
+  <app-cliente *ngIf="currentView() === 'cliente'"></app-cliente>
+  <app-alquiler *ngIf="currentView() === 'alquiler'"></app-alquiler>
+</div>

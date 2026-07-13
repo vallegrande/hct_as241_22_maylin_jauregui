@@ -1,0 +1,14 @@
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\config\CorsConfig.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\controller\AlquilerController.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\controller\ClienteController.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\controller\VehiculoController.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\HackathonApplication.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\model\Alquiler.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\model\Cliente.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\model\Vehiculo.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\repository\AlquilerRepository.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\repository\ClienteRepository.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\repository\VehiculoRepository.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\service\AlquilerService.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\service\ClienteService.java
+C:\Hackthon\hct_as241_22_maylin_jauregui\backend\src\main\java\hctjaureguimaylin\hackathon\service\VehiculoService.java

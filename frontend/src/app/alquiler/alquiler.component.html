@@ -1,0 +1,167 @@
+<div class="container">
+  <h1>Gestión de Alquileres</h1>
+  
+  <!-- Alert -->
+  <div *ngIf="alertMessage" [class]="alertType" class="alert">
+    {{ alertMessage }}
+  </div>
+
+  <!-- Form -->
+  <div class="form-container">
+    <h2>{{ isEditing ? 'Editar Alquiler' : 'Nuevo Alquiler' }}</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <div class="form-group" *ngIf="isEditing">
+          <label for="id">ID *</label>
+          <input 
+            type="number" 
+            id="id" 
+            [(ngModel)]="alquilerForm.id" 
+            name="id" 
+            disabled
+            required
+            placeholder="ID automático"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="clienteId">ID Cliente *</label>
+          <input 
+            type="number" 
+            id="clienteId" 
+            [(ngModel)]="alquilerForm.clienteId" 
+            name="clienteId" 
+            required
+            placeholder="Ingrese ID cliente"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="vehiculoId">ID Vehículo *</label>
+          <input 
+            type="text" 
+            id="vehiculoId" 
+            [(ngModel)]="alquilerForm.vehiculoId" 
+            name="vehiculoId" 
+            required
+            placeholder="Ingrese ID vehículo"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="dias">Días *</label>
+          <input 
+            type="number" 
+            id="dias" 
+            [(ngModel)]="alquilerForm.dias" 
+            name="dias" 
+            required
+            placeholder="Ingrese días"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="fechaInicio">Fecha Inicio *</label>
+          <input 
+            type="date" 
+            id="fechaInicio" 
+            [(ngModel)]="alquilerForm.fechaInicio" 
+            name="fechaInicio" 
+            required
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="fechaFin">Fecha Fin *</label>
+          <input 
+            type="date" 
+            id="fechaFin" 
+            [(ngModel)]="alquilerForm.fechaFin" 
+            name="fechaFin" 
+            required
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="total">Total *</label>
+          <input 
+            type="number" 
+            id="total" 
+            [(ngModel)]="alquilerForm.total" 
+            name="total" 
+            required
+            placeholder="Ingrese total"
+            step="0.01"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="estado">Estado *</label>
+          <select 
+            id="estado" 
+            [(ngModel)]="alquilerForm.estado" 
+            name="estado"
+            required
+          >
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+            <option value="Completado">Completado</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">
+          {{ isEditing ? 'Actualizar' : 'Crear' }}
+        </button>
+        <button type="button" (click)="resetForm()" class="btn btn-secondary" *ngIf="isEditing">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Table -->
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Lista de Alquileres</h2>
+      <button (click)="loadAlquileres()" class="btn btn-refresh">
+        🔄 Actualizar
+      </button>
+    </div>
+    <table class="alquiler-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ID Cliente</th>
+          <th>ID Vehículo</th>
+          <th>Días</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Fin</th>
+          <th>Total</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alquiler of alquileres">
+          <td>{{ alquiler.id }}</td>
+          <td>{{ alquiler.clienteId }}</td>
+          <td>{{ alquiler.vehiculoId }}</td>
+          <td>{{ alquiler.dias }}</td>
+          <td>{{ alquiler.fechaInicio }}</td>
+          <td>{{ alquiler.fechaFin }}</td>
+          <td>{{ alquiler.total }}</td>
+          <td [class]="alquiler.estado === 'Activo' ? 'status-active' : alquiler.estado === 'Completado' ? 'status-completed' : 'status-inactive'">
+            {{ alquiler.estado }}
+          </td>
+          <td>
+            <button (click)="editAlquiler(alquiler)" class="btn btn-edit">Editar</button>
+            <button (click)="deleteAlquiler(alquiler.id)" class="btn btn-delete">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="alquileres.length === 0" class="no-data">No hay alquileres registrados</p>
+  </div>
+</div>

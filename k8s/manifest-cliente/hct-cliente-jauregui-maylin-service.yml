@@ -1,0 +1,14 @@
+# kubectl apply -f hct-cliente-jauregui-maylin-service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hct-cliente-jauregui-maylin-service
+  namespace: hct-cliente-jauregui-maylin-namespace
+spec:
+  type: NodePort      #30000-32767  # Cambia a LoadBalancer si estás en un entorno de nube
+  ports:
+    - port: 8090        # Puerto que el Service expondrá
+      targetPort: 8090  # Puerto en el contenedor donde tu aplicación escucha
+      nodePort: 30002   # Puerto asignado en el nodo, opcional
+  selector:
+    app: hct-cliente-jauregui-maylin-deployment  # Debe coincidir con las etiquetas del Deployment

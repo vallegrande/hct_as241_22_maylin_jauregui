@@ -1,0 +1,280 @@
+{
+  "info": {
+    "name": "Hackathon CRUD API",
+    "description": "Colección completa de endpoints para Cliente, Alquiler y Vehículo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8090/v1/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "CLIENTE",
+      "item": [
+        {
+          "name": "GET - Obtener todos los clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cliente",
+              "host": ["{{baseUrl}}"],
+              "path": ["cliente"]
+            },
+            "description": "Retorna la lista completa de clientes"
+          }
+        },
+        {
+          "name": "GET - Obtener cliente por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cliente/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cliente", "1"]
+            },
+            "description": "Retorna un cliente específico por su ID"
+          }
+        },
+        {
+          "name": "POST - Crear cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"72654321\",\n  \"nombres\": \"Miguel Luis\",\n  \"apellidos\": \"Lopez Sanchez\",\n  \"celular\": \"987654321\",\n  \"correo\": \"miguel@gmail.com\",\n  \"licencia\": \"Q12345678\",\n  \"estado\": \"ACTIVO\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cliente",
+              "host": ["{{baseUrl}}"],
+              "path": ["cliente"]
+            },
+            "description": "Crea un nuevo cliente en el sistema"
+          }
+        },
+        {
+          "name": "PUT - Actualizar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"72654321\",\n  \"nombres\": \"Miguel Luis\",\n  \"apellidos\": \"Lopez Sanchez\",\n  \"celular\": \"987654321\",\n  \"correo\": \"miguel.nuevo@gmail.com\",\n  \"licencia\": \"Q12345678\",\n  \"estado\": \"INACTIVO\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cliente/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cliente", "1"]
+            },
+            "description": "Actualiza un cliente existente por su ID"
+          }
+        },
+        {
+          "name": "DELETE - Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cliente/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cliente", "1"]
+            },
+            "description": "Elimina un cliente por su ID"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ALQUILER",
+      "item": [
+        {
+          "name": "GET - Obtener todos los alquileres",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alquiler",
+              "host": ["{{baseUrl}}"],
+              "path": ["alquiler"]
+            },
+            "description": "Retorna la lista completa de alquileres"
+          }
+        },
+        {
+          "name": "GET - Obtener alquiler por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alquiler/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["alquiler", "1"]
+            },
+            "description": "Retorna un alquiler específico por su ID"
+          }
+        },
+        {
+          "name": "POST - Crear alquiler",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": 1,\n  \"vehiculoId\": \"VH001\",\n  \"dias\": 3,\n  \"fechaInicio\": \"2026-07-03\",\n  \"fechaFin\": \"2026-07-06\",\n  \"total\": 720.00,\n  \"estado\": \"ACTIVO\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/alquiler",
+              "host": ["{{baseUrl}}"],
+              "path": ["alquiler"]
+            },
+            "description": "Crea un nuevo alquiler en el sistema"
+          }
+        },
+        {
+          "name": "PUT - Actualizar alquiler",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": 1,\n  \"vehiculoId\": \"VH001\",\n  \"dias\": 5,\n  \"fechaInicio\": \"2026-07-03\",\n  \"fechaFin\": \"2026-07-08\",\n  \"total\": 1200.00,\n  \"estado\": \"FINALIZADO\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/alquiler/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["alquiler", "1"]
+            },
+            "description": "Actualiza un alquiler existente por su ID"
+          }
+        },
+        {
+          "name": "DELETE - Eliminar alquiler",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alquiler/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["alquiler", "1"]
+            },
+            "description": "Elimina un alquiler por su ID"
+          }
+        }
+      ]
+    },
+    {
+      "name": "VEHICULO",
+      "item": [
+        {
+          "name": "GET - Obtener todos los vehículos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/vehiculo",
+              "host": ["{{baseUrl}}"],
+              "path": ["vehiculo"]
+            },
+            "description": "Retorna la lista completa de vehículos"
+          }
+        },
+        {
+          "name": "GET - Obtener vehículo por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/vehiculo/VH001",
+              "host": ["{{baseUrl}}"],
+              "path": ["vehiculo", "VH001"]
+            },
+            "description": "Retorna un vehículo específico por su ID"
+          }
+        },
+        {
+          "name": "POST - Crear vehículo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"ABC-123\",\n  \"marca\": \"Toyota\",\n  \"modelo\": \"Corolla\",\n  \"anio\": \"2022\",\n  \"color\": \"Blanco\",\n  \"precio\": 240,\n  \"activo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/vehiculo",
+              "host": ["{{baseUrl}}"],
+              "path": ["vehiculo"]
+            },
+            "description": "Crea un nuevo vehículo en el sistema"
+          }
+        },
+        {
+          "name": "PUT - Actualizar vehículo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"ABC-123\",\n  \"marca\": \"Toyota\",\n  \"modelo\": \"Corolla\",\n  \"anio\": \"2022\",\n  \"color\": \"Negro\",\n  \"precio\": 260,\n  \"activo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/vehiculo/VH001",
+              "host": ["{{baseUrl}}"],
+              "path": ["vehiculo", "VH001"]
+            },
+            "description": "Actualiza un vehículo existente por su ID"
+          }
+        },
+        {
+          "name": "DELETE - Eliminar vehículo",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/vehiculo/VH001",
+              "host": ["{{baseUrl}}"],
+              "path": ["vehiculo", "VH001"]
+            },
+            "description": "Elimina un vehículo por su ID"
+          }
+        }
+      ]
+    }
+  ]
+}
